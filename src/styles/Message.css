@@ -1,0 +1,18 @@
+.message {
+  max-width: 60%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.message.outgoing {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+.message.incoming {
+  background-color: #ffffff;
+  align-self: flex-start;
+}
