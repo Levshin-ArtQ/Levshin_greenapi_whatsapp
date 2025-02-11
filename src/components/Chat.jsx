@@ -38,7 +38,7 @@ const Chat = ({
         isGroup
       );
       setMessages(
-        chatHistory.data.map((message) => {
+        chatHistory.data.toReversed().map((message) => {
           return{ text: message.textMessage, isOutgoing: message.type === 'outgoing' };
         })
       );
@@ -131,7 +131,7 @@ const Chat = ({
       }
     }, 5000);
     return () => clearInterval(interval);
-  }, [messages]);
+  }, []);
 
   return (
     <div className="chat">
