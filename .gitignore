@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Remove config files
+*.config.js
+*.config.cjs
+*.config.json
+*.config.yaml
+*.config.yml
+

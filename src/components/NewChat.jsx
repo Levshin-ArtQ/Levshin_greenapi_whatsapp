@@ -15,7 +15,7 @@ const NewChat = ({ onCreateChat }) => {
     <div className="new-chat">
       <form onSubmit={handleSubmit} className="new-chat-form">
         <input
-          type="text"
+          type="tel"
           placeholder="Введите номер телефона"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
