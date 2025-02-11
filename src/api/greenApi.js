@@ -36,7 +36,7 @@ export const getChatHistory = async (idInstance, apiTokenInstance, chatId, isGro
   const response = await axios.post(
     `${BASE_URL}/waInstance${idInstance}/getChatHistory/${apiTokenInstance}`,
     {
-      chatId: '79084947899@c.us',
+      chatId: '' + chatId + '@' + (isGroup ? 'g' : 'c') + '.us',
     },
   );
   console.log('get chat history', response);
