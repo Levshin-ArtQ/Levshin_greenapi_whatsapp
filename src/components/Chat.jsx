@@ -96,15 +96,18 @@ const Chat = ({
         receivedMessage &&
         receivedMessage.data.body.senderData.chatId === `${chatId}@c.us`
       ) {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
-            text: receivedMessage.data.body.messageData.textMessageData
-              .textMessage,
-            isOutgoing: false,
-            key: receivedMessage.data.receiptId,
-          },
-        ]);
+        const isDuplicate = messages.some((message) => message.key === receivedMessage.data.receiptId);
+        if (!isDuplicate) {
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              text: receivedMessage.data.body.messageData.textMessageData
+                .textMessage,
+              isOutgoing: false,
+              key: receivedMessage.data.receiptId,
+            },
+          ]);
+        }
         // убираем уведомление после получения
         console.log("recievedMessage!!", receivedMessage);
         await deleteNotification(
@@ -120,15 +123,18 @@ const Chat = ({
           ?.textMessage &&
         receivedMessage.data.body.senderData.chatId === `${chatId}@g.us`
       ) {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
-            text: receivedMessage.data.body.messageData.textMessageData
-              .textMessage,
-            isOutgoing: false,
-            key: receivedMessage.data.receiptId,
-          },
-        ]);
+        const isDuplicate = messages.some((message) => message.key === receivedMessage.data.receiptId);
+        if (!isDuplicate) {
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              text: receivedMessage.data.body.messageData.textMessageData
+                .textMessage,
+              isOutgoing: false,
+              key: receivedMessage.data.receiptId,
+            },
+          ]);
+        }
       }
     }, 10000);
     return () => clearInterval(interval);
