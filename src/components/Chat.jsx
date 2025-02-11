@@ -23,7 +23,8 @@ const Chat = ({
   const handleSendMessage = async () => {
     if (newMessage.trim()) {
       await sendMessage(idInstance, apiTokenInstance, chatId, newMessage);
-      setMessages([...messages, { text: newMessage, isOutgoing: true }]);
+      setMessages((prevMessages) => [
+        ...prevMessages, { text: newMessage, isOutgoing: true }]);
       // setNewMessage('');
     }
   };
@@ -95,8 +96,8 @@ const Chat = ({
         receivedMessage &&
         receivedMessage.data.body.senderData.chatId === `${chatId}@c.us`
       ) {
-        setMessages([
-          ...messages,
+        setMessages((prevMessages) => [
+          ...prevMessages,
           {
             text: receivedMessage.data.body.messageData.textMessageData
               .textMessage,
@@ -119,8 +120,8 @@ const Chat = ({
           ?.textMessage &&
         receivedMessage.data.body.senderData.chatId === `${chatId}@g.us`
       ) {
-        setMessages([
-          ...messages,
+        setMessages((prevMessages) => [
+          ...prevMessages,
           {
             text: receivedMessage.data.body.messageData.textMessageData
               .textMessage,
