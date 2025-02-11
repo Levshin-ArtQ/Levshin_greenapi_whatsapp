@@ -1,11 +1,13 @@
 .new-chat {
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
   padding: 20px;
 }
 
 .new-chat-form {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   max-width: 400px;
   width: 100%;

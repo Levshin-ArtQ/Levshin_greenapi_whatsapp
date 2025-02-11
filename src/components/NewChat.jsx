@@ -16,11 +16,14 @@ const NewChat = ({ onCreateChat }) => {
       <form onSubmit={handleSubmit} className="new-chat-form">
         <input
           type="tel"
-          placeholder="Введите номер телефона"
+          placeholder="Номер телефона или ChatId"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           className="new-chat-input"
         />
+        <label htmlFor="type">Тип чата групповой</label>
+        <input
+          type='radio' name='type' value='private' className="new-chat-input-radio" />
         <button type="submit" className="new-chat-button">
           Создать чат
         </button>

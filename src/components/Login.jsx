@@ -20,7 +20,7 @@ const Login = ({ onLogin }) => {
         onChange={(e) => setIdInstance(e.target.value)}
       />
       <input
-        type="text"
+        type="password"
         placeholder="apiTokenInstance"
         value={apiTokenInstance}
         onChange={(e) => setApiTokenInstance(e.target.value)}
