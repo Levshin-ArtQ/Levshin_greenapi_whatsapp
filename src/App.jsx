@@ -17,7 +17,22 @@ const App = () => {
       setIdInstance(storedIdInstance);
       setApiTokenInstance(storedApiTokenInstance);
     }
+
+    // getting chat list from localStorage
+    try {
+      const storedChatList = JSON.parse(localStorage.getItem('chatList') || '[]');
+      setChatList(storedChatList);
+    } catch (error) {
+      console.warning('Failed to parse chat list from localStorage:', error);
+      setChatList([]);
+    }
   }, []);
+
+
+  useEffect(() => {
+    localStorage.setItem('chatList', JSON.stringify(chatList));
+  }, [chatList]);
+
 
   const handleLogin = (id, token) => {
     setIdInstance(id);
@@ -39,7 +54,10 @@ const App = () => {
 
   const handleChatList = (chatList) => {setChatList(chatList)};
 
-  const handleNewChat = () => {setChatId('')};
+  const handleNewChat = () => {
+    setChatId('');
+    console.log(chatId);
+  };
 
   return (
     <div className="app">
@@ -48,14 +66,15 @@ const App = () => {
       ) : !chatId ? (
         <NewChat onCreateChat={handleCreateChat} />
       ) : (
-
-        <Chat
-          idInstance={idInstance}
-          apiTokenInstance={apiTokenInstance}
-          chatId={chatId}
-          onLogout={handleLogout}
-          onNewChat={handleNewChat}
-        />
+        <>
+          <Chat
+            idInstance={idInstance}
+            apiTokenInstance={apiTokenInstance}
+            chatId={chatId}
+            onLogout={handleLogout}
+            onNewChat={handleNewChat}
+          />
+        </>
       )}
     </div>
   );

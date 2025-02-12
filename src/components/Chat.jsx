@@ -8,6 +8,8 @@ import {
 } from "../api/greenApi";
 import "../styles/Chat.css";
 import PropTypes from "prop-types";
+import LogoutButton from "../assets/logout-white.svg";
+import NewChatIcon from "../assets/chat-plus-svgrepo-com.svg";
 
 const Chat = ({
   idInstance,
@@ -15,7 +17,7 @@ const Chat = ({
   chatId,
   isGroup,
   onLogout,
-  onNewchat,
+  onNewChat,
 }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -56,22 +58,22 @@ const Chat = ({
       );
       // проверяю, что работаю в том же чате и сообщение текстового типа
       if (receivedMessage.status == 200 && receivedMessage.data === null) {
-        console.log("no messages");
+        // console.log("no messages");
         return;
       }
       if (!receivedMessage) {
-        console.log("no message");
+        // console.log("no message");
         return;
       }
       if (!receivedMessage.data) {
-        console.log("no message data");
+        // console.log("no message data");
         return;
       }
-      if (!receivedMessage.data.body) console.log("no body");
+      // if (!receivedMessage.data.body) console.log("no body");
 
       if (receivedMessage.data.body.senderData.chatId !== `${chatId}@c.us`) {
-        console.log("not my chat");
-        console.log(receivedMessage.data.body.chatId, `${chatId}@c.us`);
+        // console.log("not my chat");
+        // console.log(receivedMessage.data.body.chatId, `${chatId}@c.us`);
 
         await deleteNotification(
           idInstance,
@@ -142,11 +144,14 @@ const Chat = ({
 
   return (
     <div className="chat">
-      <div onClick={onLogout} className="logout">
-        выйти
-      </div>
-      <div onClick={onNewchat} className="newChat">
-        Новый чат
+      <div className="chat-header">
+        <div title="Выйти из аккаунта" onClick={onLogout} className="logout-button">
+          <img src={LogoutButton} alt="[-> " className="logout-icon"/>
+        </div>
+        <div className="chat-header">{chatId}</div>
+        <div title="Сменить чат" onClick={onNewChat}  className="add-chat-button">
+          <img src={NewChatIcon} alt="[+]" className="add-chat-icon" />
+        </div>
       </div>
       <div className="messages">
         {messages.map((message, index) => (

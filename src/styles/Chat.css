@@ -50,3 +50,55 @@
 .message-input button:hover {
   background-color: #128c7e;
 }
+
+.add-chat-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  line-height: none;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #25d366;
+  color: white;
+  font-size: 98px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.add-chat-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.logout-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  line-height: none;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #25d366;
+  color: white;
+}
+
+.logout-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: white;
+  background:#25d366
+}
+
